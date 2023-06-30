@@ -1,0 +1,79 @@
+seed: 1
+model:
+    feature_extractor:
+        arch: resnet50
+        pretrained: true
+    classifier:
+        arch: mlpcls
+        feat_size: [2048, 1000] # [feat_dim, bottleneck_dim]
+        n_class: 31 # domainnet
+        nonlinear: relu
+        dp: True
+        _sqrt_norm: true
+        dropout_p: 0.5
+        # norm: 1 # LDAM
+data:
+    source:
+        loader: FileDataLoader
+        data_root: /data/
+        train: source.txt
+        val: source.txt
+        n_workers: 4
+        drop_last: true
+        n_class: 31 # domainnet
+        sampler:
+            name: random
+            #name: class_balanced
+        imbalance_factor: 1
+        reversed: false
+        mode: exp
+        inverse: false
+    target:
+        loader: FileDataLoader
+        data_root: /data/
+        train: target.txt
+        val: target.txt
+        n_workers: 4
+        drop_last: true
+        n_class: 31 # domainnet
+        sampler:
+            name: random
+        imbalance_factor: 1
+        reversed: false
+        mode: exp
+        inverse: false
+training:
+    trainer: safn
+    losses:
+        loss_cls:
+            name: cross_entropy
+        loss_entropy:
+            name: EntropyLoss
+            coeff: 0.1
+        loss_safn:
+            name: AFNLoss
+            coeff: 0.05
+            offset: 1.0
+    iteration: 100004
+    batch_size: 32
+    # batch_size: 256
+    val_interval: 5000
+    save_interval: 5000
+    print_interval: 2500
+    optimizer:
+        name: sgd
+        # lr: 0.03
+        momentum: 0.9
+        weight_decay: 0.0005
+        nesterov: true
+    scheduler:
+        init_lr: 0.003
+        name: inv
+        gamma: 0.001
+        power: 0.75
+    resume:
+        #model: runs/plain/clipart/ep-200_model.pkl
+        model: 
+        load_cls: false
+        param_only: true
+exp: a2d_noldam

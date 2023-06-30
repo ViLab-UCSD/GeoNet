@@ -1,0 +1,98 @@
+seed: 1
+model:
+    feature_extractor:
+        arch: resnet50
+        pretrained: true
+    classifier:
+        arch: mlpcls
+        nonlinear: relu
+        # norm: 1 # LDAM
+        feat_size: [2048, 256] # [feat_dim, bottleneck_dim]
+        n_class: 31 # domainnet
+    ### comment random_layer if not using it; use random layer when d > 4096
+    # random_layer:
+    #     arch: randomlyr
+    #     input_dim_list: [256, 31] # [bottleneck_dim, n_class]
+    #     output_dim: 1024 # random_dim
+    ###
+    discriminator:
+        arch: advnet
+        # in_feature: 1024 # random_dim (if using random layer)
+        in_feature: 256 # bottleneck_dim x n_class (if not using random layer)
+        hidden_size: 1024
+data:
+    source:
+        loader: FileDataLoader
+        data_root: /data/
+        train: source.txt
+        val: source.txt
+        n_workers: 4
+        drop_last: true
+        n_class: 31 # domainnet
+        sampler:
+            name: random
+            #name: class_balanced
+        imbalance_factor: 1
+        reversed: false
+        mode: exp
+        inverse: false
+    target:
+        loader: FileDataLoader
+        data_root: /data/
+        train: target.txt
+        val: target.txt
+        n_workers: 4
+        drop_last: true
+        n_class: 31 # domainnet
+        sampler:
+            name: random
+        imbalance_factor: 1
+        reversed: false
+        mode: exp
+        inverse: false
+training:
+    trainer: memsac
+    losses:
+        loss_cls:
+            name: cross_entropy
+        loss_d:
+            name: cdan
+            use_entropy: false # true for CDAN+E; false for CDAN
+            coeff: 1
+        loss_msc:
+            name: MemSACLoss
+            queue_size: 48000
+            momentum: 0
+            coeff: 0.1
+            n_neighb: 5
+            distance: cosine
+            temperature: 0.07
+            warm_up: 4000
+    iteration: 100004
+    batch_size: 32
+    # batch_size: 256
+    val_interval: 5000
+    save_interval: 5000
+    print_interval: 2500
+    optimizer:
+        name: sgd
+        # lr: 0.003
+        # lr: 0.03
+        momentum: 0.9
+        weight_decay: 0.0005
+        nesterov: false
+    scheduler:
+        init_lr: 0.003
+        name: inv
+        gamma: 0.001
+        power: 0.75
+    # scheduler:
+    #     name: multiStepLr
+    #     gamma: 0.1
+    #     milestones: [35000,50000,60000]
+    resume:
+        #model: runs/plain/clipart/ep-200_model.pkl
+        model: 
+        load_cls: false
+        param_only: true
+exp: a2d_noldam
