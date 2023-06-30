@@ -6,8 +6,8 @@
 # Author: Gina Wu @ 01/22
 ###
 
-from .dataloader import FileDataLoader, ImageDataLoader
-from .digits import MNISTLoader, SVHNLoader, USPSLoader
+from .dataloader import FileDataLoader, ImageDataLoader, JsonDataLoader
+from .json_loader import ImageJSONLoader
 
 
 def get_dataloader(cfg, splits, batch_size):
@@ -21,9 +21,7 @@ def _get_loader_instance(name):
         return {
             'FileDataLoader': FileDataLoader,
             'ImageDataLoader': ImageDataLoader,
-            'MNIST': MNISTLoader,
-            'SVHN' : SVHNLoader,
-            'USPS' : USPSLoader
+            'JSONDataLoader': JsonDataLoader,
         }[name]
     except:
         raise BaseException('Loader type {} not available'.format(name))

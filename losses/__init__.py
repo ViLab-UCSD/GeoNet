@@ -7,7 +7,7 @@ import copy
 import torch.nn as nn
 import logging
 
-from .loss import AFNLoss, CDANLoss, HDALoss, MCCLoss, EntropyLoss, CrossEntropyLoss, MemSACLoss, MDDLoss
+from .loss import CDANLoss, EntropyLoss, CrossEntropyLoss
 
 logger = logging.getLogger('mylogger')
 
@@ -37,11 +37,6 @@ def _get_loss_instance(name):
             'cdan': CDANLoss,
             'dann': CDANLoss,
             'EntropyLoss': EntropyLoss,
-            'AFNLoss': AFNLoss,
-            'MCCLoss': MCCLoss,
-            'MemSACLoss': MemSACLoss,
-            'MDDLoss' : MDDLoss,
-            'HDALoss' : HDALoss
         }[name]
     except:
         raise BaseException('Loss function {} not available'.format(name))

@@ -11,14 +11,8 @@ def train_cdan(batch_iterator, model_fe, model_cls, model_d, opt, it, criterion_
     opt.zero_grad()
 
     # get data
-    (img_src, lbl_src), (img_tgt, _) = next(batch_iterator)
+    (_, img_src, lbl_src), (_, img_tgt) = next(batch_iterator)
     img_src, img_tgt, lbl_src = img_src.cuda(), img_tgt.cuda(), lbl_src.cuda()
-
-    # forward
-    # bs_size = img_src.size(0)
-    # all_images = torch.cat([img_src, img_tgt], dim=0)
-    # output, feature = model_cls(model_fe(all_images), feat=True)
-    # output_src, _ = output.split(bs_size)
 
     output_src, imfeat_src = model_cls(model_fe(img_src), feat=True)
     output_tgt, imfeat_tgt = model_cls(model_fe(img_tgt), feat=True)
@@ -52,7 +46,3 @@ def train_cdan(batch_iterator, model_fe, model_cls, model_d, opt, it, criterion_
             )
 
         logger.info(print_str)
-
-    # writer.add_scalar('train/lr', curr_lr, it + 1)
-    # writer.add_scalar('train/c_loss', closs.item(), it + 1)
-    # writer.add_scalar('train/da_loss', daloss.item(), it + 1)

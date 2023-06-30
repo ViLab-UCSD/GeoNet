@@ -6,32 +6,17 @@ model:
     classifier:
         arch: mlpcls
         nonlinear: relu
-        # norm: 1 # LDAM
         feat_size: [2048, 256] # [feat_dim, bottleneck_dim]
-        # feat_size: 2048 # [feat_dim, bottleneck_dim]
         n_class: 31 # domainnet
-        # dp: True
-        # _sqrt_norm: true
-        # dropout_p: 0.5
-    ### comment random_layer if not using it; use random layer when d > 4096
-    # random_layer:
-    #     arch: randomlyr
-    #     input_dim_list: [256, 31] # [bottleneck_dim, n_class]
-    #     output_dim: 1024 # random_dim
-    ###
-    discriminator:
-        arch: advnet
-        # in_feature: 1024 # random_dim (if using random layer)
-        in_feature: 256 # bottleneck_dim x n_class (if not using random layer)
-        hidden_size: 1024
 data:
     target:
-        loader: FileDataLoader
+        loader: JSONDataLoader
         data_root: /data/
-        val: target.txt
         n_workers: 4
-        drop_last: false
-        n_class: 31 # domainnet
+        drop_last: true
+        ann: false ## UDA
+        loc: false
+        meta: false
 testing:
     batch_size: 64
     resume:

@@ -11,33 +11,21 @@ model:
         n_class: 31 # domainnet
 data:
     source:
-        loader: FileDataLoader
+        loader: JSONDataLoader
         data_root: /data/
-        train: source.txt
-        val: source.txt
         n_workers: 4
         drop_last: true
-        n_class: 31 # domainnet
-        sampler:
-            name: random
-        imbalance_factor: 1
-        reversed: false
-        mode: exp
-        inverse: false
+        ann: true
+        loc: false
+        meta: false
     target:
-        loader: FileDataLoader
+        loader: JSONDataLoader
         data_root: /data/
-        train: target.txt
-        val: target.txt
         n_workers: 4
         drop_last: true
-        n_class: 31 # domainnet
-        sampler:
-            name: random
-        imbalance_factor: 1
-        reversed: false
-        mode: exp
-        inverse: false
+        ann: false ## UDA
+        loc: false
+        meta: false
 training:
     trainer: plain
     losses:

@@ -1,7 +1,3 @@
-### utils.py
-# Utility functions for data loading.
-# Author: Gina Wu @ 01/22
-###
 
 import pandas as pd
 from PIL import Image
