@@ -1,5 +1,9 @@
 ## GeoNet - CVPR 2023
 
+![Eg2](./assets/intro_map.png)
+
+[Project Page](https://tarun005.github.io/GeoNet/) | [Arxiv](http://arxiv.org/abs/2303.15443) | [Project Video](https://youtu.be/8ctgN8UBK9E) | [Challenge](https://geonet-challenge.github.io/ICCV2023/)
+
 This repo contains the dataloader and training scripts for GeoNet dataset released as part of our GeoNet paper in [CVPR2023](https://tarun005.github.io/GeoNet/). The repository also contains baseline adaptation methods towards GeoNet challenge in [ICCV2023](https://geonet-challenge.github.io/ICCV2023/). 
 
 ### GeoNet Dataset and Statistics

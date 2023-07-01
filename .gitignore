@@ -15,7 +15,6 @@ ILSVRC_train.txt
 *.torch
 *.pdf
 .ipynb_checkpoints
-*.png
 *.jpg
 experiment_*
 inspect*
