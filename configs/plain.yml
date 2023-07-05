@@ -23,7 +23,7 @@ data:
         data_root: /data/
         n_workers: 4
         drop_last: true
-        ann: false ## UDA
+        ann: true
         loc: false
         meta: false
 training:

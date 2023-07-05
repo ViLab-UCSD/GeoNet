@@ -2,7 +2,7 @@ import torch
 from metrics import averageMeter, accuracy, percls_accuracy
 from collections.abc import Iterable
 
-def val(data_loader, model_fe, model_cls, it, n_classes, domain, logger, writer):
+def val(data_loader, model_fe, model_cls, it, n_classes, logger, writer):
 
     # setup average meters
     losses = averageMeter()
@@ -19,7 +19,6 @@ def val(data_loader, model_fe, model_cls, it, n_classes, domain, logger, writer)
     len_dl = len(data_loader)
     print()
     for (step, value) in enumerate(data_loader):
-
 
         image = value[1].cuda()
         target = value[2].cuda(non_blocking=True)

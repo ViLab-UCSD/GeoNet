@@ -7,7 +7,7 @@ def train_plain(batch_iterator, model_fe, model_cls, opt, it, criterion_cls,
     opt.zero_grad()
 
     # get data
-    (_, img_src, lbl_src), (_, img_tgt) = next(batch_iterator)
+    (_, img_src, lbl_src), (_, img_tgt,_) = next(batch_iterator)
     img_src, lbl_src = img_src.cuda(), lbl_src.cuda()
 
     # forward

@@ -1,4 +1,4 @@
-## GeoNet - CVPR 2023
+# GeoNet - CVPR 2023
 
 ![Eg2](./assets/intro_map.png)
 

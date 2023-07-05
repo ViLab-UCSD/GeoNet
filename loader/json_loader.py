@@ -92,15 +92,15 @@ class ImageJSONLoader(data.Dataset):
 
         if return_ann:
             id_to_ann = {ann["image_id"]:ann for imd in imdata for ann in imd["annotations"]}
-            assert len(id_to_ann) == len(id_to_im), "Annotations Missing"
+            assert len(id_to_ann) >= len(id_to_im), "Annotations Missing"
 
         if return_loc:
             id_to_loc = {loc["image_id"]:loc for imd in imdata for loc in imd["locations"]}
-            assert len(id_to_loc) == len(id_to_im), "Locations Missing"
+            assert len(id_to_loc) >= len(id_to_im), "Locations Missing"
 
         if return_meta:
             id_to_meta = {meta["image_id"]:meta for imd in imdata for meta in imd["metadata"]}
-            assert len(id_to_meta) == len(id_to_im), "Metadata Missing"
+            assert len(id_to_meta) >= len(id_to_im), "Metadata Missing"
 
         ## combine image, annotation and locations
         self.geodata = []

@@ -156,9 +156,9 @@ def main():
         if (it + 1) % cfg['training']['val_interval'] == 0:
                 
             with torch.no_grad():
-                acc_src, acc_src_top5 = val(data_loader_src['test'], model_fe, model_cls, it, n_classes, "source", logger, writer)
+                acc_src, acc_src_top5 = val(data_loader_src['test'], model_fe, model_cls, it, n_classes, logger, writer)
                 
-                acc_tgt, acc_tgt_top5 = val(data_loader_tgt['test'], model_fe, model_cls, it, n_classes, "target", logger, writer)
+                acc_tgt, acc_tgt_top5 = val(data_loader_tgt['test'], model_fe, model_cls, it, n_classes, logger, writer)
                 is_best = False
                 if acc_tgt > best_acc_tgt:
                     is_best = True
