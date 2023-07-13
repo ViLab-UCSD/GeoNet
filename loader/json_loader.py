@@ -148,14 +148,3 @@ class ImageJSONLoader(data.Dataset):
 
     def __len__(self):
         return len(self.geodata)
-
-if __name__ == "__main__":
-
-    # places_root = "/newfoundland2/tarun/datasets/Places205/data/vision/torralba/deeplearning/GeoDA/GeoPlaces_dataset/"
-    # places_json = "/home/tarun/GeoDA_Project/metadata/geoPlaces_metadata.json"
-    imnet_root = "/newdata/tarun/datasets/WebVision/GeoILSVRC"
-    imnet_json = "/home/tarun/GeoDA_Project/metadata/geoImnet_metadata.json"
-    dataset = ImageJSONLoader(imnet_root, imnet_json, domain=["asia", "usa"], split=["train", "test"])
-
-    print(len(dataset))
-
