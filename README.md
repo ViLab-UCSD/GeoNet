@@ -8,7 +8,7 @@ This repo contains the dataloader and training scripts for GeoNet dataset releas
 
 ### GeoNet Dataset and Statistics
 
-|          | GeoImnet | GeoPlaces | 
+|          | GeoPlaces | GeoImnet | 
 | -------- | -------- | --------- | 
 USA-Train      |  178110 | 154908 |
 USA-Val      |  17234 | 16784     |
