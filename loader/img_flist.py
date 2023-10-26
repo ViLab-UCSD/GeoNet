@@ -1,8 +1,3 @@
-### img_flist.py
-# A dataset class to load image file list from a txt/csv file.
-# Author: Gina Wu @ 01/22
-###
-
 import os
 import torch.utils.data as data
 

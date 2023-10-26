@@ -1,11 +1,3 @@
-### train_ldam_cdan.py
-# Script for generic adaptation framework.
-# Ref: https://github.com/kaidic/LDAM-DRW
-# Ref: https://github.com/thuml/CDAN/blob/master/pytorch
-# Author: Gina Wu @ 02/22
-###
-
-from email.policy import default
 import time
 import argparse
 import os

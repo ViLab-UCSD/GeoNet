@@ -1,7 +1,3 @@
-### scheduler.py
-# Scheduler modules.
-# Author: Gina Wu @ 02/22
-###
 from collections import Counter
 
 class MultiStep_scheduler(object):

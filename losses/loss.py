@@ -1,8 +1,3 @@
-### losses.py
-# Define loss functions.
-# Author: Gina Wu @ 01/22
-###
-
 import copy
 import logging
 import queue

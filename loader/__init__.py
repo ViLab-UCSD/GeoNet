@@ -1,11 +1,3 @@
-### __init__.py
-# Function to get different types of data loader instances.
-# FileDataLoader to load datasets from file - of the form <im_path> <label_id>.
-# BaseDataLoader to load datasets from directories of the form images/<class_name>/<im_name>.png.
-# 
-# Author: Gina Wu @ 01/22
-###
-
 from .dataloader import FileDataLoader, ImageDataLoader, JsonDataLoader
 from .json_loader import ImageJSONLoader
 

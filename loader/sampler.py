@@ -1,8 +1,3 @@
-### sampler.py
-# Functions to setup data sampler.
-# Author: Gina Wu @ 01/22
-###
-
 import numpy as np
 from collections import Counter
 import torch

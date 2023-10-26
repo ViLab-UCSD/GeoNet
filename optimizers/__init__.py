@@ -1,8 +1,3 @@
-### __init__.py
-# Functions for setting up optimizers and learning rate schedulers.
-# Author: Gina Wu @ 01/22
-###
-
 import logging
 import copy
 from torch.optim import SGD, Adam, lr_scheduler

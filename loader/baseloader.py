@@ -1,8 +1,3 @@
-### basedata.py
-# Data loader from file
-# Author: Gina Wu @ 01/22
-###
-
 import os
 import logging
 import numpy as np

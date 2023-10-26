@@ -1,8 +1,3 @@
-### basedata.py
-# Data loader from file
-# Author: Gina Wu @ 01/22
-###
-
 from loader.baseloader import BaseLoader
 from loader.img_flist import ImageFilelist
 from loader.json_loader import ImageJSONLoader

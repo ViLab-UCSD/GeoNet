@@ -1,8 +1,3 @@
-### __init__.py
-# Get model instance with designated parameters.
-# Author: Gina Wu @ 01/22
-###
-
 import copy
 import torch.nn as nn
 import logging

@@ -1,8 +1,3 @@
-### mlpcls.py
-# Module of MLP classifier.
-# Author: Gina Wu @ 01/22
-###
-
 from models.utils import GradientReverseLayer
 import torch
 from torch import nn
